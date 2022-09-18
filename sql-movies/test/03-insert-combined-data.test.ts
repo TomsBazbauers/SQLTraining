@@ -6,12 +6,20 @@ import {
   selectRatingsByUserID,
   selectMovieId
 } from "../src/queries/select";
-import { MOVIE_RATINGS } from "../src/table-names";
+import { MOVIES, MOVIE_RATINGS } from "../src/table-names";
 import { Rating } from "../src/data/types";
 import { minutes } from "./utils";
 
 const insertRatings = (movieId: number, ratings: Rating[]) => {
-  throw new Error(`todo`);
+  return(
+    `INSERT INTO movie_ratings (user_id, movie_id, rating, time_created) VALUES` +
+  ratings.map(rate => `(
+    '${rate.userId}',
+    '${movieId}',
+    '${rate.rating}',
+    '${rate.time_created}'
+    )`).join(",")
+  );
 };
 
 describe("Insert Combined Data", () => {
