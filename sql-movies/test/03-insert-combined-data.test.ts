@@ -14,9 +14,9 @@ const insertRatings = (movieId: number, ratings: Rating[]) => {
   return(
     `INSERT INTO movie_ratings (user_id, movie_id, rating, time_created) VALUES` +
   ratings.map(rate => `(
-    '${rate.userId}',
-    '${movieId}',
-    '${rate.rating}',
+    ${rate.userId},
+    ${movieId},
+    ${rate.rating},
     '${rate.time_created}'
     )`).join(",")
   );

@@ -11,7 +11,14 @@ describe("Queries Across Tables", () => {
   it(
     "should select top three directors ordered by total budget spent in their movies",
     async done => {
-      const query = `todo`;
+      const query = `SELECT 
+      ROUND(SUM(budget_adjusted), 2) AS total_budget, 
+      full_name AS director FROM movies 
+      JOIN movie_directors ON movies.id = movie_directors.movie_id
+      JOIN directors ON movie_directors.director_id = directors.id
+      GROUP BY director 
+      ORDER BY total_budget DESC 
+      LIMIT 3`;
       const result = await db.selectMultipleRows(query);
 
       expect(result).toEqual([
