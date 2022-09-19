@@ -32,37 +32,37 @@ export const selectProductionCompany = (company: string): string => {
 
 export const selectMovieById = (id: number): string => {
   return(
-    `SELECT id FROM ${MOVIES} id = '${id}'`
+    `SELECT id FROM ${MOVIES} WHERE id = '${id}'`
     );
 };
 
 export const selectGenreById = (id: number): string => {
   return(
-    `SELECT genre_id FROM ${MOVIE_GENRES} id = '${id}'`
+    `SELECT genre_id FROM ${MOVIE_GENRES} WHERE genre_id = '${id}'`
     );
 };
 
 export const selectDirectorById = (id: number): string => {
   return(
-    `SELECT director_id FROM ${MOVIE_DIRECTORS} id = '${id}'`
+    `SELECT director_id FROM ${MOVIE_DIRECTORS} WHERE director_id = '${id}'`
     );
 };
 
 export const selectActorById = (id: number): string => {
   return(
-    `SELECT actor_id FROM ${MOVIE_ACTORS} id = '${id}'`
+    `SELECT actor_id FROM ${MOVIE_ACTORS} WHERE actor_id = '${id}'`
     );
 };
 
 export const selectKeywordById = (id: number): string => {
   return(
-    `SELECT keyword_id FROM ${MOVIE_KEYWORDS} id = '${id}'`
+    `SELECT keyword_id FROM ${MOVIE_KEYWORDS} WHERE keyword_id = '${id}'`
     );
 };
 
 export const selectProductionCompanyById = (id: number): string => {
   return(
-    `SELECT company_id FROM ${MOVIE_PRODUCTION_COMPANIES} id = '${id}'`
+    `SELECT company_id FROM ${MOVIE_PRODUCTION_COMPANIES} WHERE company_id = '${id}'`
     );
 };
 
