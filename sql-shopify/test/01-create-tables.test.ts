@@ -37,6 +37,7 @@ const CREATE_APPS_CATEGORIES_TABLE = `CREATE TABLE ${APPS_CATEGORIES}
     app_id integer NOT NULL,
     category_id integer NOT NULL,
     PRIMARY KEY(app_id, category_id)
+    FOREIGN KEY(app_id) REFERENCES apps(id)
 )`;
 
 const CREATE_KEY_BENEFITS_TABLE = `CREATE TABLE ${KEY_BENEFITS}
