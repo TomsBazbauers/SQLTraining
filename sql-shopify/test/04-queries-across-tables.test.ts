@@ -37,8 +37,7 @@ describe("Queries Across Tables", () => {
     }, minutes(1));
 
     it("should select top 3 prices by appearance in apps and in price range from $5 to $10 inclusive (not matters monthly or one time payment)", async done => {
-        const query = `SELECT COUNT(app_id) AS count, price, CAST(SUBSTR(price, 2, 4) AS REAL) AS casted_price
-        FROM ${PRICING_PLANS}
+        const query = `SELECT COUNT(app_id) AS count, price, CAST(SUBSTR(price, 2, 4) AS REAL) AS casted_price FROM ${PRICING_PLANS}
         JOIN apps_pricing_plans ON apps_pricing_plans.pricing_plan_id = pricing_plans.id
         WHERE casted_price >= 5 AND casted_price <= 10
         GROUP BY casted_price
