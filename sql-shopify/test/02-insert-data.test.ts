@@ -19,10 +19,9 @@ const insertApps = (apps: App[]) => {
     return (
         `INSERT INTO ${APPS}
         (
-            id, url, title, tagline, developer, developer_link, icon, 
+            url, title, tagline, developer, developer_link, icon, 
             rating, reviews_count, description, pricing_hint) VALUES` + 
         apps.map(app => `(
-            ${app.shopifyAppId},
             '${app.url}',
             '${escape(app.title)}',
             '${escape(app.tagline)}',
