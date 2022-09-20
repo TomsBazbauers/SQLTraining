@@ -38,6 +38,7 @@ const CREATE_APPS_CATEGORIES_TABLE = `CREATE TABLE ${APPS_CATEGORIES}
     category_id integer NOT NULL,
     PRIMARY KEY(app_id, category_id)
     FOREIGN KEY(app_id) REFERENCES apps(id)
+    FOREIGN KEY(category_id) REFERENCES categories(id)
 )`;
 
 const CREATE_KEY_BENEFITS_TABLE = `CREATE TABLE ${KEY_BENEFITS}
@@ -46,6 +47,7 @@ const CREATE_KEY_BENEFITS_TABLE = `CREATE TABLE ${KEY_BENEFITS}
     title text NOT NULL,
     description text NOT NULL,
     PRIMARY KEY(app_id, title)
+    FOREIGN KEY(app_id) REFERENCES apps(id)  
 )`;
 
 const CREATE_PRICING_PLANS_TABLE = `CREATE TABLE ${PRICING_PLANS}
@@ -59,6 +61,8 @@ const CREATE_APPS_PRICING_PLANS_TABLE = `CREATE TABLE ${APPS_PRICING_PLANS}
     app_id integer NOT NULL,
     pricing_plan_id integer NOT NULL,
     PRIMARY KEY(app_id, pricing_plan_id)
+    FOREIGN KEY(pricing_plan_id) REFERENCES pricing_plans(id)
+    FOREIGN KEY(app_id) REFERENCES apps(id)
 )`;
 
 const CREATE_REVIEWS_TABLE = `CREATE TABLE ${REVIEWS}
