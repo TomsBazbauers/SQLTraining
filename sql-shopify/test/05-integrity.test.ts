@@ -2,7 +2,7 @@ import _ from "lodash";
 import { Database } from "../src/database";
 import { selectRowById } from "../src/queries/select";
 import { minutes } from "./utils";
-import { CATEGORIES, PRICING_PLANS, APPS } from "../src/shopify-table-names";
+import { CATEGORIES, PRICING_PLANS, APPS, APPS_CATEGORIES, KEY_BENEFITS, APPS_PRICING_PLANS, REVIEWS } from "../src/shopify-table-names";
 
 describe("Foreign Keys", () => {
     let db: Database;
@@ -55,7 +55,13 @@ describe("Foreign Keys", () => {
 
     it("should be able to delete app", async done => {
         const appId = 355;
-        const query = `DELETE * FROM ${APPS} WHERE id = ${appId}`;
+        const query = `BEGIN TRANSACTION;
+        DELETE FROM ${KEY_BENEFITS} WHERE app_id = ${appId};
+        DELETE FROM ${APPS_PRICING_PLANS} WHERE app_id = ${appId};
+        DELETE FROM ${APPS_CATEGORIES} WHERE app_id = ${appId};
+        DELETE FROM ${REVIEWS} WHERE app_id = ${appId};
+        DELETE FROM ${APPS} WHERE id = ${appId};
+        COMMIT;`;
         try {
             await db.delete(query);
           } catch (e) {}

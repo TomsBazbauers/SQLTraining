@@ -47,7 +47,7 @@ const insertAppCategories = (appCategories: AppCategory[]) => {
     return (
         `INSERT INTO ${APPS_CATEGORIES}(app_id, category_id) VALUES` + 
         appCategories.map(appCategory => 
-            `('${appCategory.shopifyAppId}',
+            `(${appCategory.shopifyAppId},
             '${appCategory.categoryId}')`).join(",")
     );
 };
@@ -56,7 +56,7 @@ const insertKeyBenefits = (keyBenefits: KeyBenefit[]) => {
     return (
         `INSERT INTO ${KEY_BENEFITS}(app_id, title, description) VALUES` + 
         keyBenefits.map(keyBenefit => 
-            `('${keyBenefit.shopifyAppId}',
+            `(${keyBenefit.shopifyAppId},
             '${escape(keyBenefit.title)}',
             '${escape(keyBenefit.description)}')`).join(",")
     );
