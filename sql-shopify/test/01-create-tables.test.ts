@@ -46,8 +46,7 @@ const CREATE_KEY_BENEFITS_TABLE = `CREATE TABLE ${KEY_BENEFITS}
     app_id integer NOT NULL,
     title text NOT NULL,
     description text NOT NULL,
-    PRIMARY KEY(app_id, title)
-    FOREIGN KEY(app_id) REFERENCES apps(id)  
+    PRIMARY KEY(app_id, title)   
 )`;
 
 const CREATE_PRICING_PLANS_TABLE = `CREATE TABLE ${PRICING_PLANS}
